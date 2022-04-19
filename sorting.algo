@@ -1,0 +1,29 @@
+/* sort an array using insertion sort*/
+
+ALGORITHM insert_Sort
+VAR
+    i, j : INTEGER
+    inputArray: ARRAY_OF FLOAT[]
+    temp : FLOAT 
+BEGIN
+
+    write("give the unsorted array")
+    Read(inputArray)
+    
+//Mark first element as sorted that's whay we started from the index 1
+
+    FOR i FROM 1 TO inputArray.length-1 STEP 1  DO
+        temp := inputArray[i]
+        j := i-1
+// Compare temp with each element of on the left of it (sorted part) until an element smaller than it is found
+        WHILE (j >= 0 AND temp < inputArray[j]) DO
+            inputArray[j+1] := inputArray[j]
+            j := j-1
+        END_WHILE
+// Place temp at the right of element who's smaller than it
+        inputArray[j+1] := temp
+        
+    END_FOR
+// print the sorted input array
+    Write("The sorted array: ", inputArray)
+END
